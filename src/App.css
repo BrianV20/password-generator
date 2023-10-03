@@ -1,42 +1,91 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+
+  /* color-scheme: light dark; */
+  /* color: rgba(255, 255, 255, 0.87); */
+  color: #231942;
+  /* color: #5e548e; */
+  background-color: #242424;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+main {
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  min-height: 100vh;
+  min-width: 100vw;
+  padding: 0 0.8rem;
+}
+
+h1 {
+  color: #020F66;
+  font-size: 2.2rem;
+  border: 2px solid red;
+  padding: 2rem 0.5rem;
+}
+
+.inputs form {
+  /* style the inputs container */
+  /* display: flex; */
+  flex-direction: row;
+  justify-content: center;
+  /* align-items: center; */
+  /* border: 2px solid red; */
+  /* padding: 2rem 0.5rem; */
+
+}
+
+.show {
+  /* border: 2px solid blueviolet; */
+}
+
+#password {
+  color: #020F66;
+  font-weight: 600;
+  background-color: #E6EBEF;
+  border: 1px solid #ABB4BD;
+  font-size: 1.5rem;
   text-align: center;
+  border-radius: 20px;
+  padding: 1rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
+.functionalityButtons {
+  display: flex;
+  /* flex-direction: row;ç */
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+  > button {
+    border: 1px solid #ABB4BD;
+    border-radius: 20px;
+    min-width: 50%;
+    padding: 0.5rem 1rem;
+    background-color: #E6EBEF;
+    color: #020F66;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: #020F66;
+      color: #E6EBEF;
+    }
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
