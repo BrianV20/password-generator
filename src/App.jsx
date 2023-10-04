@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
@@ -35,10 +35,10 @@ function App() {
   };
 
   const generatePassword = () => {
-    const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const lowercase = "abcdefghijklmnopqrstuvwxyz";
-    const numbers = "0123456789";
-    const symbols = "!@#$%^&*";
+    const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const lowercase = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz";
+    const numbers = "012345678901234567890123456789";
+    const symbols = "!@#$%^&*!@#$%^&*!@#$%^&*!@#$%^&*";
 
     let password = "";
 
@@ -57,14 +57,6 @@ function App() {
     if (configs.symbols) {
       password += symbols;
     }
-
-    // if (password.length < 10) {
-    //   setScore("weak");
-    // } else if (password.length >= 10 && password.length < 20) {
-    //   setScore("medium");
-    // } else {
-    //   setScore("strong");
-    // }
 
     return password
       .split("")
@@ -116,15 +108,12 @@ function App() {
   return (
     <main className="app">
       <h1>Password Generator</h1>
-      {/* <p>--Generate a random password--</p> */}
       <h3>
         Your password's score: <span className={score}>{score}</span>
       </h3>
 
       <section className="show">
-        {/* <h2>Generated Password</h2> */}
         <p id="password">
-          {/* {generatePassword()} <i className="far fa-eye"></i> */}
           {password} <i className={eyeClass} onClick={hidePassword}></i>
         </p>
         <div className="functionalityButtons">
@@ -148,7 +137,7 @@ function App() {
             name="length"
             id="length"
             min="8"
-            max="50"
+            max="30"
             value={range}
             onChange={handleRangeOnChange}
           />
