@@ -66,7 +66,13 @@ function App() {
   };
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(password);
+    // navigator.clipboard.writeText(password);
+    const textarea = document.createElement("textarea");
+    textarea.value = password;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
     alert("Password copied to clipboard!");
   };
 
