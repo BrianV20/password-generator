@@ -18,7 +18,6 @@ function App() {
 
   useEffect(() => {
     setPassword(generatePassword());
-    passwordStrength();
     if (
       !configs.uppercase &&
       !configs.lowercase &&
@@ -27,6 +26,7 @@ function App() {
     ) {
       setConfigs({ ...configs, [lastChecked]: true });
     }
+    passwordStrength();
   }, [configs, range]);
 
   const handleRangeOnChange = (e) => {
@@ -67,12 +67,27 @@ function App() {
 
   const copyToClipboard = () => {
     // navigator.clipboard.writeText(password);
-    const textarea = document.createElement("textarea");
-    textarea.value = password;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    document.body.removeChild(textarea);
+    let temp = "";
+    for (let i = 0; i < password.length; i++) {
+      temp += "*";
+    }
+
+    if (password === temp) {
+      //aca entraria si la contra esta oculta
+      const textarea = document.createElement("textarea");
+      textarea.value = previousPassword;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textarea);
+    } else {
+      const textarea = document.createElement("textarea");
+      textarea.value = password;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textarea);
+    }
     alert("Password copied to clipboard!");
   };
 
@@ -89,6 +104,8 @@ function App() {
 
   const regeneratePassword = () => {
     setPassword(generatePassword());
+    passwordStrength();
+    changeIcon();
   };
 
   const hidePassword = () => {
@@ -104,6 +121,10 @@ function App() {
       setPassword(encryptedPassword);
     }
 
+    changeIcon();
+  };
+
+  const changeIcon = () => {
     if (eyeClass === "fa-solid fa-eye") {
       setEyeClass("fa-solid fa-eye-slash");
     } else {
