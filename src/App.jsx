@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import { InputField } from "./components/InputField";
 
 function App() {
   const [range, setRange] = useState(8);
@@ -105,7 +106,7 @@ function App() {
   const regeneratePassword = () => {
     setPassword(generatePassword());
     passwordStrength();
-    changeIcon();
+    // changeIcon();
   };
 
   const hidePassword = () => {
@@ -155,78 +156,72 @@ function App() {
 
       <section className="configurations">
         <h3>Addditional options</h3>
-        <form action="">
-          <p id="rangeValue">Characters: {range}</p>
+        <p id="rangeValue">Characters: {range}</p>
 
-          <label htmlFor="length"></label>
-          <input
-            type="range"
-            name="length"
-            id="length"
-            min="8"
-            max="30"
-            value={range}
-            onChange={handleRangeOnChange}
-          />
+        <label htmlFor="length"></label>
+        <input
+          type="range"
+          name="length"
+          id="length"
+          min="8"
+          max="30"
+          value={range}
+          onChange={handleRangeOnChange}
+        />
 
-          <div className="inputs">
-            <div>
-              <input
-                type="checkbox"
-                name="uppercase"
-                id="uppercase"
-                checked={configs.uppercase}
-                onChange={() => {
-                  setConfigs({ ...configs, uppercase: !configs.uppercase });
-                  setLastChecked("uppercase");
-                }}
-              />
-              <label htmlFor="uppercase">A-Z </label>
-            </div>
-
-            <div>
-              <input
-                type="checkbox"
-                name="lowercase"
-                id="lowercase"
-                checked={configs.lowercase}
-                onChange={() => {
-                  setConfigs({ ...configs, lowercase: !configs.lowercase });
-                  setLastChecked("lowercase");
-                }}
-              />
-              <label htmlFor="lowercase">a-z </label>
-            </div>
-
-            <div>
-              <input
-                type="checkbox"
-                name="numbers"
-                id="numbers"
-                checked={configs.numbers}
-                onChange={() => {
-                  setConfigs({ ...configs, numbers: !configs.numbers });
-                  setLastChecked("numbers");
-                }}
-              />
-              <label htmlFor="numbers">0-9 </label>
-            </div>
-
-            <div>
-              <input
-                type="checkbox"
-                name="symbols"
-                id="symbols"
-                checked={configs.symbols}
-                onChange={() => {
-                  setConfigs({ ...configs, symbols: !configs.symbols });
-                  setLastChecked("symbols");
-                }}
-              />
-              <label htmlFor="symbols">!@#$%^&* </label>
-            </div>
+        <div className="inputs">
+          <div>
+            <InputField
+              type="checkbox"
+              name="uppercase"
+              checked={configs.uppercase}
+              onChange={() => {
+                setConfigs({ ...configs, uppercase: !configs.uppercase });
+                setLastChecked("uppercase");
+              }}
+              text="A-Z"
+            />
           </div>
-        </form>
+
+          <div>
+            <InputField
+              type="checkbox"
+              name="lowercase"
+              checked={configs.lowercase}
+              onChange={() => {
+                setConfigs({ ...configs, lowercase: !configs.lowercase });
+                setLastChecked("lowercase");
+              }}
+              text="a-z"
+            />
+          </div>
+
+          <div>
+            <InputField
+              type="checkbox"
+              name="numbers"
+              checked={configs.numbers}
+              onChange={() => {
+                setConfigs({ ...configs, numbers: !configs.numbers });
+                setLastChecked("numbers");
+              }}
+              text="0-9"
+            />
+          </div>
+
+          <div>
+            <InputField
+              type="checkbox"
+              name="symbols"
+              checked={configs.symbols}
+              onChange={() => {
+                setConfigs({ ...configs, symbols: !configs.symbols });
+                setLastChecked("symbols");
+              }}
+              text="!@#$%^&*"
+            />
+          </div>
+        </div>
       </section>
     </main>
   );
